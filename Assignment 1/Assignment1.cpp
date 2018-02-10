@@ -8,113 +8,124 @@
 #include <iostream>
 using namespace std;
 
+/* function for calculating  amount withdrawn amount into dollar bills 50s, 20s, 10s etc...*/
+void withdrawMoney(int input)
+{
+	int withdrawamount = input;
+	int fifty, twenty, tens, five, one;
+	
+	/* CHECK IT OUT!!!  THIS IS DO WHILE LOOP IT MAKES IT RAIN 'drip drip' */
+	do
+	{
+		if (withdrawamount >= 50)
+		{
+			fifty = (withdrawamount / 50);
+			withdrawamount = (withdrawamount - (50 * fifty));
+			if (fifty > 0)
+			{
+				cout << "you have " << fifty << " $50 bill(s). " << endl;
+			}
+		}
 
+		if (withdrawamount >= 20)
+		{
+			twenty = (withdrawamount / 20);
+			withdrawamount = (withdrawamount - (20 * twenty));
+			if (twenty > 0)
+			{
+				cout << "you have " << twenty << " $20 bill(s). " << endl;
+			}
+		}
 
+		if (withdrawamount >= 10)
+		{
+			tens = (withdrawamount / 10);
+			withdrawamount = (withdrawamount - (10 * tens));
+			if (tens > 0)
+			{
+				cout << "you have " << tens << " $10 bill(s). " << endl;
+			}
+		}
+
+		if (withdrawamount >= 5)
+		{
+			five = (withdrawamount / 5);
+			withdrawamount = withdrawamount - (5 * five);
+			if (five > 0)
+			{
+				cout << "you have " << five << " $5 bill(s). " << endl;
+			}
+		}
+
+		if (withdrawamount >= 1)
+		{
+			one = (withdrawamount / 1);
+			withdrawamount = (withdrawamount - (1 * one));
+			if (one > 0)
+			{
+				cout << "you have " << one << " $1 bill(s). " << endl;
+			}
+			
+		}
+		if (withdrawamount == 0)
+		{
+			
+			break;
+		}
+		
+
+		
+	} while (withdrawamount <= 300 || withdrawamount >= 1);
+
+	
+} 
 
 int main()
 {
-	int withdrawamount;
-	int fifty, twenty, tens, five, one;
+	int input;
 	char proceed;
-	// variables for first assignment
-
-	cout << "please enter amount you wish to withdraw --> ", cin >> withdrawamount;
-
-		
-		
 	
-	/* loop making sure the withdraw amount stays between 1-300*/
-
-	 do 
+	// allows user to input a dollar value to be calculated
+	cout << "please enter withdrawl amount --> ", cin >> input;
+	
+	/*While loop for making sure the user follows instructions 
+	 Also used for continuing and exiting program. */
+	while (input != 'n')
 	{
-		 if (withdrawamount >= 50)
-		 {
-			 fifty = (withdrawamount / 50);
-			 withdrawamount = (withdrawamount - (50 * fifty));
-			 if (fifty > 0)
-			 {
-				 cout <<"you have "<< fifty << " $50 bill(s). " << endl;
-			 }
-		 }
-
-		 if (withdrawamount >= 20)
-		 {
-			 twenty = (withdrawamount / 20);
-			withdrawamount = (withdrawamount - (20 * twenty));
-			 if (twenty > 0)
-			 {
-				 cout << "you have " << twenty << " $20 bill(s). " << endl;
-			 }
-		 }
-
-		 if (withdrawamount >= 10)
-		 {
-			tens = (withdrawamount / 10);
-			 withdrawamount = (withdrawamount - (10 * tens));
-			 if (tens > 0)
-			 {
-				 cout << "you have " << tens << " $10 bill(s). " << endl;
-			 }
-		 }
-
-		 if (withdrawamount >= 5)
-		 {
-			 five = (withdrawamount / 5);
-			 withdrawamount = withdrawamount - (5 * five);
-			 if (five > 0)
-			 {
-				 cout << "you have " << five << " $5 bill(s). " << endl;
-			 }
-		 }
-
-		 if (withdrawamount >= 1)
-		 {
-			 one = (withdrawamount / 1);
-			 withdrawamount = (withdrawamount - (1 * one));
-			 if (one > 0)
-			 {
-				 cout << "you have " << one << " $1 bill(s). " << endl;
-			 }
-		 }
-		 //if statments for calcualting amout of bills $50, 20, 10, 5 , and 1s
-
-		 if (withdrawamount == 0)
-		 {
-			 cout << "would you like to make another withdrawal? Enter Y to continue N to exit" << endl;
-			 cin >> proceed;
-			 cout << " " << endl;
-			 if (proceed == 'y' || proceed == 'Y')
-			 {
-				 cout << "please enter amount you wish to withdraw --> ", cin >> withdrawamount;
-			 }
-			 else if (proceed='n' || proceed== 'N')
-
-			 {
-				 exit(0);
-			 }
-		 }
-
-		do
-		 {
-			 if (withdrawamount > 300)
-			 {
-				 cout << "Sorry but the max you can withdraw is $300.00" << endl;
-				 cout << "please enter amount you wish to withdraw --> ", cin >> withdrawamount;
-				 cout << " " << endl;
-			 }
-			 if (withdrawamount < 1)
-			 {
-				 cout << "Sorry but the min you can withdraw is $1.00" << endl;
-				 cout << "please enter amount you wish to withdraw --> ", cin >> withdrawamount;
-				 cout << " " << endl;
-			 }
-		}while (withdrawamount > 300 || withdrawamount < 1);
-
-		
+		if (input > 300)
+		{
+			cout << "Sorry but the max you can withdraw is $300.00" << endl;
+			cout << " " << endl;
+			cout << "please enter amount you wish to withdraw --> ", cin >> input;
+	
+		}
+		if (input < 1)
+		{
+			cout << "Sorry but the min you can withdraw is $1.00" << endl;
+			cout << " " << endl;
+			cout << "please enter amount you wish to withdraw --> ", cin >> input;
 			
-		} while (withdrawamount <= 300 || withdrawamount >= 1);
+		}
+		else
+		{
+			withdrawMoney(input);
+		
+			cout << "another withdrawal? enter Y to continue" << endl;
+			cin >> proceed;
+			cout << " " << endl;
+			if (proceed == 'y' || proceed == 'Y')
+			{
+				cout << "please withdrawl amount --> ", cin >> input;;
+			}
 
-		/* loop for making figuring out the amount of each bill and to ask if user would like to proceed with withdrawls*/
+			if (proceed == 'n' || proceed == 'N')
+			{
+				exit(0);
+			}
+		}
+
+	}
+	
 
     return 0;
 }
